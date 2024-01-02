@@ -144,7 +144,8 @@
                     <div class="input-box  w-[100%]">
 
                         <span class="details  font-[700] ">Name : </span>
-                        <input type="text" name="namefeedbackdata" placeholder="Enter your name : " required id="nameuser">
+                        <input type="text" name="namefeedbackdata" placeholder="Enter your name : " required
+                            id="nameuser">
                         <span class="details  font-[700] ">Feedback : </span>
                         <textarea name='Feedback' id="feedback" type="text"
                             class=' mt-2 text-[#fff] w-[100%] outline-none rounded-[2px] resize-none bg-[#2b2525] p-[20px]'
@@ -170,22 +171,26 @@
         event.preventDefault();
         const feedbackdata = data.value;
         const namefeedbackdata = namedata.value;
-        console.log(feedbackdata+''+namefeedbackdata);
+        console.log(feedbackdata + '' + namefeedbackdata);
         try {
             const res = await fetch('/users/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({feedbackdata,namefeedbackdata})
+                body: JSON.stringify({ feedbackdata, namefeedbackdata })
             })
             if (res.status === 200) {
                 window.alert('Feedback Send🥰🥰')
+                data.value = "";
+                namedata.value = "";
             }
             if (res.status === 400) {
                 window.alert('All field require 🥰🥰')
+                data.value = "";
+                namedata.value = "";
             }
-            
+
 
         } catch (error) {
             window.alert(' Some techniacl issue reload the page 🥰🥰')
