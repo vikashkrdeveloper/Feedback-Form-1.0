@@ -7,7 +7,25 @@ const feedbackDataSchema = new database.Schema({
         trim: true,
         lowercase: true
     },
-    feedback: {
+    question1: {
+        type: String,
+        require: true,
+        trim: true,
+        lowercase: true
+    },
+    question2: {
+        type: String,
+        require: true,
+        trim: true,
+        lowercase: true
+    },
+    answer1: {
+        type: String,
+        require: true,
+        trim: true,
+        lowercase: true
+    },
+    answer2: {
         type: String,
         require: true,
         trim: true,

@@ -109,54 +109,54 @@
     form .button input:hover {
         background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     }
-
-    @media(max-width: 584px) {
-        .container {
-            max-width: 100%;
-        }
-
-        .content form .user-details {
-            max-height: 300px;
-            overflow-y: scroll;
-        }
-
-        .user-details::-webkit-scrollbar {
-            width: 5px;
-        }
-    }
-
-    @media(max-width: 459px) {
-        .container .content .category {
-            flex-direction: column;
-        }
-    }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 
 
-<body class=" bg-[#001] w-[100%] h-[100vh]  flex justify-center items-center">
+<body class=" bg-[#001] w-[100%] h-[100%]  flex justify-center items-center p-[20px]">
     <div class="container  ">
         <div class="title">Feedback</div>
         <hr>
         <div class="content">
             <form id="FormDatafun">
-                <div class="user-details w-[100%]">
+                <div class="user-details w-[100%] ">
                     <div class="input-box  w-[100%]">
-
-                        <span class="details  font-[700] ">Name : </span>
-                        <input type="text" name="namefeedbackdata" placeholder="Enter your name : " required
-                            id="nameuser">
-                        <span class="details  font-[700] ">Feedback : </span>
-                        <textarea name='Feedback' id="feedback" type="text"
+                        <div
+                            class=" w-[100%] h-[400px] gap-[50px] p-[20px] flex justify-center space-y-[10px] items-center max-[1024px]:block max-[1024px]:h-[auto]">
+                            <img class=" w-[48%] h-[100%] max-[1024px]:w-[100%] rounded-[10px]"
+                                src="../images/Coding.png" />
+                            <img class=" w-[50%] h-[100%] max-[1024px]:w-[100%] rounded-[10px]"
+                                src="../images/Quiz.png" />
+                        </div>
+                        <div
+                            class=" w-[100%] h-[400px] gap-[50px] max-[1024px]:h-[auto] p-[20px] flex justify-center items-center">
+                            <img class=" w-[48%] max-[1024px]:w-[100%]  h-[100%] rounded-[10px]"
+                                src="../images/Home.png" />
+                        </div>
+                        <span
+                            class="details  font-[700] text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]">Name
+                            : </span>
+                        <input type="text" name="name" placeholder="Enter your name : " required id="nameuser">
+                        <h1 class="details  font-[700] p-[20px] pl-[0px]  font-[700] text-[30px] max-[1024px]:text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]"
+                            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">What are the bug you
+                            have found in the website ? </h1>
+                        <textarea name='answer1' id="answer1" type="text"
                             class=' mt-2 text-[#fff] w-[100%] outline-none rounded-[2px] resize-none bg-[#2b2525] p-[20px]'
-                            placeholder="Please Give Me A Feedback" rows='10' cols='72' required></textarea>
+                            placeholder="Please Give Me A Answer" rows='10' cols='72' required></textarea>
+                        <h1 class="details  font-[700] p-[20px] pl-[0px]  font-[700] text-[30px] max-[1024px]:text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]"
+                            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">What are your
+                            suggestion for improvement ?</h1>
+                        <textarea name='answer2' id="answer2" type="text"
+                            class=' mt-2 text-[#fff] w-[100%] outline-none rounded-[2px] resize-none bg-[#2b2525] p-[20px]'
+                            placeholder="Please Give Me A Answer" rows='10' cols='72' required></textarea>
 
                     </div>
                 </div>
                 <div class=" w-[100%] h-[auto] flex justify-center items-center">
 
                     <button type="submit" style="background: linear-gradient(#71b7e6,#005,#003);"
-                        class="text-[#fff] w-[100%] h-[30px] p-[20px] flex justify-center items-center rounded-[4px]">Feedback</button>
+                        class="text-[#fff] w-[100%] h-[30px] p-[20px] flex justify-center items-center rounded-[4px]">Send
+                        Feedback</button>
                 </div>
 
             </form>
@@ -164,29 +164,30 @@
     </div>
 </body>
 <script>
-    const FormDatafun = document.querySelector('#FormDatafun');
-    const data = document.querySelector('#feedback')
+    const FormDatas = document.querySelector('#FormDatafun');
+    const data = document.querySelector('#answer1')
+    const data2 = document.querySelector('#answer2')
     const namedata = document.querySelector('#nameuser')
-    FormDatafun.addEventListener('submit', async (event) => {
+    FormDatas.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const feedbackdata = data.value;
+        const answer1 = data.value;
+        const answer2 = data2.value;
         const namefeedbackdata = namedata.value;
-        console.log(feedbackdata + '' + namefeedbackdata);
         try {
             const res = await fetch('/users/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ feedbackdata, namefeedbackdata })
+                body: JSON.stringify({ question1: "What are the bug you have found in the website ?", question2: "What are your suggestion for improvement ?", answer1, answer2, namefeedbackdata })
             })
             if (res.status === 200) {
-                window.alert('Feedback Send🥰🥰')
+                window.alert('Thank you so much to send your Feedback🥰🥰')
                 data.value = "";
                 namedata.value = "";
             }
             if (res.status === 400) {
-                window.alert('All field require 🥰🥰')
+                window.alert('Pleased field all answer 🥰🥰')
                 data.value = "";
                 namedata.value = "";
             }
