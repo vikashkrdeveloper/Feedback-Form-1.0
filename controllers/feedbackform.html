@@ -109,6 +109,15 @@
     form .button input:hover {
         background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     }
+
+    #link {
+      color: #ff0000;
+    }
+
+    #link:hover {
+        color: #007ccf;
+        border-bottom: 2px solid rgb(0, 115, 192);
+    }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -133,9 +142,11 @@
                             <img class=" w-[48%] max-[1024px]:w-[100%]  h-[100%] rounded-[10px]"
                                 src="../images/Quiz.png" />
                         </div>
-                        <a href="http://178.16.139.228" class="text-[20px] p-[20px] pl-[0px]  font-[700]  max-[480px]:text-[12px] mb-[20px]" style="color: red;">Want to explore more then click here !!</a>
+                        <a href="http://178.16.139.228"
+                            class="text-[20px] border-b-[2px] animate-pulse border-[#FF5733] hover:text-[#00B6F0]   font-[700]  max-[480px]:text-[12px]"
+                            id="link">Want to explore more then click here !!</a>
                         <span
-                            class="details  font-[700] text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]">Name
+                            class="details  mt-6 font-[700] text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]">Name
                             : </span>
                         <input type="text" name="name" placeholder="Enter your name : " required id="nameuser">
                         <h1 class="details  font-[700] p-[20px] pl-[0px]  font-[700] text-[30px] max-[1024px]:text-[20px] max-[600px]:text-[15px] max-[400px]:text-[12px]"
